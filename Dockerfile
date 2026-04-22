@@ -3,6 +3,9 @@ FROM python:3.12-slim AS build
 WORKDIR /app
 RUN pip install --no-cache-dir uv==0.4.30
 
+ENV UV_PYTHON_PREFERENCE=only-system \
+    UV_PYTHON_DOWNLOADS=never
+
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-install-project --no-dev
 
