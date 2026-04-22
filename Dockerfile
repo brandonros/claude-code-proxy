@@ -1,4 +1,4 @@
-FROM python:3.12-slim AS build
+FROM python:3.10-slim AS build
 
 WORKDIR /app
 RUN pip install --no-cache-dir uv==0.4.30
@@ -13,7 +13,7 @@ COPY . .
 RUN uv sync --frozen --no-dev
 
 
-FROM python:3.12-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 COPY --from=build /app /app
